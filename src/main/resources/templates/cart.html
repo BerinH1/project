@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Korpa-Čikac</title>
+    <link rel="stylesheet" href="/css/home.css"/>
+    <link rel="stylesheet" href="/css/product.css"/>
+    <link rel="stylesheet" href="/css/product-details.css"/>
+    <link rel="stylesheet" href="/css/cart.css"/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+    />
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css"
+    />
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css"
+            integrity="sha384-eoTu3+HydHRBIjnCVwsFyCpUDZHZSFKEJD0mc3ZqSBSb6YhZzRHeiomAUWCstIWo"
+            crossorigin="anonymous"
+    />
+</head>
+<body>
+<div class="container">
+    <div class="navbar">
+        <div class="logo">
+            <a th:href="@{/index}"
+            ><img src="/css/cikacBez.png" width="60px"
+            /></a>
+        </div>
+        <nav>
+            <ul id="MenuItems">
+                <li><a th:href="@{/}">Početna</a></li>
+                <li><a th:href="@{/product}">Proizvodi</a></li>
+                <li><a th:href="@{/sign-in}">Prijavi se</a></li>
+                <li><a th:href="@{/logout}">Odjava</a></li>
+            </ul>
+        </nav>
+        <a th:href="@{/cart}"
+        ><img src="/css/renameCart.png" width="30px" height="30px"
+        /></a>
+        <img src="/css/menu.png" class="menu-icon" onclick="menutoggle()"/>
+    </div>
+</div>
+
+
+<!---cart-->
+
+<div class="small-container cart-page">
+    <table>
+        <tr>
+            <th>PROIZVOD</th>
+            <th>KOLIČINA</th>
+            <th>CIJENA</th>
+        </tr>
+        <tr th:each="entry: ${cart.getOrderEntryList()}">
+            <td>
+                <div class="cart-info">
+                    <img th:src="@{${entry.getProduct().getImage()}}">
+                    <div>
+                        <p th:text="${entry.getProduct().getName()}"></p>
+                        <small th:text="'Cijena: ' + ${entry.getProduct().getPrice() + entry.getProduct().getCurrency().getCurrencyCode()}"></small>
+                        <br>
+                        <a th:href="@{/cart/orderEntry/{id}(id=${entry.getId()})}" th:method="delete">Remove</a>
+                    </div>
+                </div>
+            </td>
+            <td><p th:text="${entry.getQuantity()}"></p></td>
+            <td th:text="${entry.getProduct().getPrice().floatValue() * entry.getQuantity()}"></td>
+        </tr>
+    </table>
+
+    <div class="total-price">
+        <table>
+            <tr>
+                <td>UKUPNA CIJENA</td>
+                <td th:text="${cart.getTotalPrice()}"></td>
+            </tr>
+        </table>
+    </div>
+
+    <form class="col-2" action="#" th:action="@{/order-finish}" method="get">
+        <button class="btn" type="submit">
+            Finish order
+        </button>
+    </form>
+</div>
+
+<!-----footer-->
+
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col-1">
+                <h3>Skinite našu aplikaciju</h3>
+                <p>Skinite našu aplikaciju za android i ios</p>
+                <div class="app-logo">
+                    <img src="/css/play-store.png" />
+                    <img src="/css/app-store.png" />
+                </div>
+            </div>
+            <div class="footer-col-2">
+                <img src="/css/cikacBez.png"/>
+                <p style="color: #ff523b">
+                    Kontakt informacije <br>
+                    E-mail: cikac2021@gmail.com <br>
+                    Broj telefona: 033 333 333
+                </p>
+            </div>
+            <div class="footer-col-3">
+                <h3>Korisni linkovi</h3>
+                <ul>
+                    <li><a style="color: blue" href="https://gadgets360.com/mobiles/compare-best-phones"
+                           target="_blank">Uporedi svoje mobitele !</a></li>
+                    <br>
+                    <li><a style="color: blue" href="https://www.tomsguide.com/best-picks/best-phones" target="_blank">Mobiteli
+                        2022 !</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col-4">
+                <h3>Pratite nas na</h3>
+                <ul>
+                    <li style="color: blue">Facebook</li>
+                    <li style="color: lightblue">Twitter</li>
+                    <li style="color: beige">Instagram</li>
+                    <li style="color: red">Youtube</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var MenuItems = document.getElementById("MenuItems");
+    MenuItems.style.maxHeight = "0px";
+
+    function menutoggle() {
+        if (MenuItems.style.maxHeight == "0px") {
+            MenuItems.style.maxHeight = "200px";
+        } else {
+            MenuItems.style.maxHeight = "0px";
+        }
+    }
+</script>
+</body>
+</html>
