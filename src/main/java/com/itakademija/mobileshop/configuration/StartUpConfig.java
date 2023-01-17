@@ -40,7 +40,7 @@ public class StartUpConfig {
             product.setPrice(new BigDecimal("2000.00"));
             product.setName("Apple iPhone SE3 128GB");
             product.setQuantityInStock(23);
-            product.setImage("https://atstore.ba/wp-content/uploads/2020/04/1-11.jpg");
+            product.setImage("https://www.google.com/aclk?sa=l&ai=DChcSEwjnlr7Qzcv8AhUQ03cKHYrZD1kYABAHGgJlZg&sig=AOD64_0HDpxoyTjRUG2luA6RrZUOR17OXA&adurl&ctype=5&ved=2ahUKEwiPmbTQzcv8AhXS2KQKHdfVDXgQvhd6BQgBEIQB");
             productRepository.save(product);
 
             var product2 = new Product();
@@ -68,7 +68,7 @@ public class StartUpConfig {
             product2.setPrice(new BigDecimal("2100.00"));
             product2.setName("Samsung Galaxy S22 Plus 5G 256GB");
             product2.setQuantityInStock(10);
-            product2.setImage("https://www.etoren.com/upload/images/0.88681800_1644475263_samsung-galaxy-s22-plus-5g-dual-sim-sm-s906e-256gb-graphite-8gb-ram.jpg");
+            product2.setImage("https://www.univerzalno.com/wp-content/uploads/2022/08/HP-440G6PO-AiO-1-2.jpg");
             productRepository.save(product2);
 
 
@@ -205,7 +205,7 @@ public class StartUpConfig {
             product8.setPrice(new BigDecimal("3099.90"));
             product8.setName("Apple iPhone 13 Pro MAX 1TB");
             product8.setQuantityInStock(15);
-            product8.setImage("https://cjenolov.ba/storage/media/5262/apple-iphone-13-pro-max-1tb.jpg");
+            product8.setImage("https://www.univerzalno.com/wp-content/uploads/2022/08/HP-440G6PO-AiO-1-2.jpg");
             productRepository.save(product8);
 
 

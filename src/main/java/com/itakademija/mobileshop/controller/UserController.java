@@ -57,7 +57,7 @@ public class UserController {
 
         @PostMapping("/saveUser")
     public String saveUser(@ModelAttribute("prazanKorisnik") User user) {
-        user.setRole(Role.USER);
+        user.setRole(Role.ADMIN);
         String hashedPassword = bCryptPasswordEncoder.encode(user.getPassword());
         user.setPassword(hashedPassword);
         userService.saveUser(user);
